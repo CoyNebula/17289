@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" aria-placeholder="Escribe ek nombre" id="nombre">
+    <button> Enviar</button>
+    <script>
+        function llamar(){
+        let url = "http://localhost:8080/";
+        fetch (url)
+        .then(response => console.log(response))
+        .then (data => console.log(data));    
+        
+    }    
+    function llamarGet(){
+        let url = "http://localhost:8080/obtenersaludo";
+        fetch (url)
+        .then(response => response.text())
+        .then (data => console.log(data));
+    }  
+
+    function llamarParam(){
+        let nombre = document.getElementById("nombre").value;
+        let url = "http://localhost:8080/query?nombre"+{nombre};
+        fetch (url)
+        .then(response => response.text())  
+        .then (data => console.log(data));
+    }
+
+    function llamarPost(){
+        let url = "http://localhost:8080/crearsaludo";
+        fetch (url)
+        .then(response => response.text())
+        .then (data => console.log(data));
+    }
+    </script>
+
+</body>
+</html>
